@@ -22,6 +22,16 @@
 		  analytics.page();
 		  }}();
 		</script>
+		<script>
+		function callSegment(){
+			analytics.track("Registered", {
+			  plan: "Pro Annual",
+			  accountType: "Facebook"
+			});
+		}
+		}
+		</script>
+
 
 		<title>Phantom by HTML5 UP</title>
 		<meta charset="utf-8" />
@@ -90,7 +100,7 @@
 									<span class="image">
 										<img src="images/pic02.jpg" alt="" />
 									</span>
-									<a href="generic.html">
+									<a href="generic.html" onclick="callSegment()">
 										<h2>Lorem</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
