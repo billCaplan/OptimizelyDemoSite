@@ -28,51 +28,5 @@
     <div class="footer">
 
     </div>
-    <script type="text/javascript">
-      function sendRevenue(e){
-        var formData = document.querySelector('#revenueInput').value
-        var valueInCents = parseFloat(formData) * 100;
-
-        window["optimizely"] = window["optimizely"] || [];
-
-        window["optimizely"].push({
-          "type": "event",
-          "eventName": "buy_shoes",
-          "tags": {
-            "revenue": valueInCents
-          }
-        });
-        formData="";
-        document.querySelector(".shoeSuccess").style.display = "block";
-        setTimeout(function(){ document.querySelector(".shoeSuccess").style.display = "none"; }, 5000);
-      }
-
-
-      function sendRevenueShirts(e){
-        var formData = document.querySelector('#revenueInputShirts').value
-        var valueInCents = parseFloat(formData) * 100;
-
-        window["optimizely"] = window["optimizely"] || [];
-
-        window["optimizely"].push({
-          "type": "event",
-          "eventName": "buy_shirts",
-          "tags": {
-            "revenue": valueInCents
-          }
-        });
-
-
-        formData = "";
-        document.querySelector(".shirtSuccess").style.display = "block";
-        setTimeout(function(){ document.querySelector(".shirtSuccess").style.display = "none"; }, 5000);
-      }
-      var form = document.getElementById('purchaseButtonShoes');
-      form.addEventListener('click', sendRevenue);
-
-      var formShirts = document.getElementById('purchaseButtonShirts');
-      formShirts.addEventListener('click', sendRevenueShirts);
-
-    </script>
   </body>
 </html>
