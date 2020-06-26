@@ -46,8 +46,17 @@
     <script type="text/javascript">
       function sendRevenue(e){
         var formData = document.querySelector('#revenueInput').value
-        alert(formData);
+        var valueInCents = parseFloat(formData) * 100;
 
+        window["optimizely"] = window["optimizely"] || [];
+
+        window["optimizely"].push({
+          "type": "event",
+          "eventName": "trackRevenue",
+          "tags": {
+            "revenue": valueInCents
+          }
+        });
 
       }
       var form = document.getElementById('purchaseButton');
