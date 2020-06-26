@@ -13,6 +13,18 @@
     <script type="text/javascript">
       console.log("hey2")
     </script>
+    <style media="screen">
+      body{
+        margin:40px
+      }
+      .product{
+        margin:30px;
+      }
+      .shoeSuccess, .shirtSuccess{
+        margin-top: 10px;
+        color: green;
+      }
+    </style>
   </head>
   <body>
     <div class="header">
@@ -27,16 +39,34 @@
           <div class="img">
 
           </div>
+
           <div class="">
+            <div class="">
+              Buy Shoes
+            </div>
             <input type="number" name="" value="" id="revenueInput">
-            <button type="button" name="button" id="purchaseButton">Purchase</button>
+            <button type="button" name="button" id="purchaseButtonShoes">Purchase</button>
           </div>
 
-          <form id="form">
-            <input type="number" name="price" value='34'>
-             <input type="hidden" id="custId" name="custId" value="3487">
-            <button type="submit" name="button">Purchase</button>
-          </form>
+          <div class="shoeSuccess" style="display:none;">
+            Thank you!
+          </div>
+          </div>
+          <br><br><br>
+          <div class="product">
+          <div class="shirts">
+            <div class="">
+              Buy Shirts
+            </div>
+            <input type="number" name="" value="" id="revenueInputShirts">
+            <button type="button" name="button" id="purchaseButtonShirts">Purchase</button>
+          </div>
+        </div>
+
+        <div class="shirtSuccess" style="display:none;">
+          Thank you!
+        </div>
+</div>
         </div>
       </div>
     </div>
@@ -52,15 +82,41 @@
 
         window["optimizely"].push({
           "type": "event",
-          "eventName": "trackRevenue",
+          "eventName": "buy_shoes",
+          "tags": {
+            "revenue": valueInCents
+          }
+        });
+        formData="";
+        document.querySelector(".shoeSuccess").style.display = "block";
+        setTimeout(function(){ document.querySelector(".shoeSuccess").style.display = "none"; }, 5000);
+      }
+
+
+      function sendRevenueShirts(e){
+        var formData = document.querySelector('#revenueInputShirts').value
+        var valueInCents = parseFloat(formData) * 100;
+
+        window["optimizely"] = window["optimizely"] || [];
+
+        window["optimizely"].push({
+          "type": "event",
+          "eventName": "buy_shirts",
           "tags": {
             "revenue": valueInCents
           }
         });
 
+
+        formData = "";
+        document.querySelector(".shirtSuccess").style.display = "block";
+        setTimeout(function(){ document.querySelector(".shirtSuccess").style.display = "none"; }, 5000);
       }
-      var form = document.getElementById('purchaseButton');
+      var form = document.getElementById('purchaseButtonShoes');
       form.addEventListener('click', sendRevenue);
+
+      var formShirts = document.getElementById('purchaseButtonShirts');
+      formShirts.addEventListener('click', sendRevenueShirts);
 
     </script>
   </body>
