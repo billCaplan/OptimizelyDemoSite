@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://cdn.optimizely.com/js/18233602676.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      console.log("hey")
+    </script>
+    <div class="">
+
+    </div>
+    <script type="text/javascript">
+      console.log("hey2")
+    </script>
+  </head>
+  <body>
+    <div class="header">
+
+    </div>
+    <div class="body">
+      <div class="">
+        This is the Optimizely Store
+      </div>
+      <div class="products">
+        <div class="product">
+          <div class="img">
+
+          </div>
+          <div class="">
+            <input type="number" name="" value="" id="revenueInput">
+            <button type="button" name="button" id="purchaseButton">Purchase</button>
+          </div>
+
+          <form id="form">
+            <input type="number" name="price" value='34'>
+             <input type="hidden" id="custId" name="custId" value="3487">
+            <button type="submit" name="button">Purchase</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+
+    </div>
+    <script type="text/javascript">
+      function sendRevenue(e){
+        var formData = document.querySelector('#revenueInput').value
+        alert(formData);
+
+
+      }
+      var form = document.getElementById('purchaseButton');
+      form.addEventListener('click', sendRevenue);
+
+    </script>
+  </body>
+</html>
