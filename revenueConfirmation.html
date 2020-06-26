@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://cdn.optimizely.com/js/18233602676.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .price, .message{
+        width: 100%;
+        margin: 40px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+
+    </div>
+    <div class="body">
+      <div class="message">
+        Thank you for your Purchase!
+      </div>
+
+      <div class="price">
+        <span>$</span><span id="price">37.50</span>
+      </div>
+    </div>
+    <div class="footer">
+
+    </div>
+    <script type="text/javascript">
+      function sendRevenue(e){
+        var formData = document.querySelector('#revenueInput').value
+        var valueInCents = parseFloat(formData) * 100;
+
+        window["optimizely"] = window["optimizely"] || [];
+
+        window["optimizely"].push({
+          "type": "event",
+          "eventName": "buy_shoes",
+          "tags": {
+            "revenue": valueInCents
+          }
+        });
+        formData="";
+        document.querySelector(".shoeSuccess").style.display = "block";
+        setTimeout(function(){ document.querySelector(".shoeSuccess").style.display = "none"; }, 5000);
+      }
+
+
+      function sendRevenueShirts(e){
+        var formData = document.querySelector('#revenueInputShirts').value
+        var valueInCents = parseFloat(formData) * 100;
+
+        window["optimizely"] = window["optimizely"] || [];
+
+        window["optimizely"].push({
+          "type": "event",
+          "eventName": "buy_shirts",
+          "tags": {
+            "revenue": valueInCents
+          }
+        });
+
+
+        formData = "";
+        document.querySelector(".shirtSuccess").style.display = "block";
+        setTimeout(function(){ document.querySelector(".shirtSuccess").style.display = "none"; }, 5000);
+      }
+      var form = document.getElementById('purchaseButtonShoes');
+      form.addEventListener('click', sendRevenue);
+
+      var formShirts = document.getElementById('purchaseButtonShirts');
+      formShirts.addEventListener('click', sendRevenueShirts);
+
+    </script>
+  </body>
+</html>
